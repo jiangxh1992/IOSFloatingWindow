@@ -5,17 +5,20 @@
 //  Created by Xinhou Jiang on 6/13/16.
 //
 //
-#define floatSize 40
+#define floatWindowSize 50                // 悬浮窗窗口尺寸
+#define imageName_normal @"add_button"    // 悬浮窗按钮默认图片
+#define imageName_selected @"add_rotate"  // 悬浮窗按钮选中图片
+
+
 #import "FloatingViewController.h"
 #import "UIDragButton.h"
-#import "FloatWindow.h"
 
 @interface FloatingViewController ()<UIDragButtonDelegate>
 
 /**
  *  悬浮的window
  */
-@property(strong,nonatomic) FloatWindow *window;
+@property(strong,nonatomic) UIWindow *window;
 
 /**
  *  悬浮的按钮
@@ -32,6 +35,9 @@
     self.view.frame = CGRectZero;
     // 延时显示悬浮窗口
     [self performSelector:@selector(createButton) withObject:nil afterDelay:1];
+    
+    // 注册屏幕旋转通知
+    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(statusBarOrientationChange:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
 }
 
 /**
@@ -39,28 +45,34 @@
  */
 - (void)createButton
 {
-    // 悬浮按钮
+    // 1.悬浮按钮
     _button = [UIDragButton buttonWithType:UIButtonTypeCustom];
-    [_button setImage:[UIImage imageNamed:@"add_button"] forState:UIControlStateNormal];
+    [_button setImage:[UIImage imageNamed:imageName_normal] forState:UIControlStateNormal];
     // 按钮图片伸缩充满整个按钮
     _button.imageView.contentMode = UIViewContentModeScaleToFill;
-    _button.frame = CGRectMake(0, 0, floatSize, floatSize);
-    // 按钮点击事件
-    [_button addTarget:self action:@selector(floatBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    // 按钮尺寸
+    _button.frame = CGRectMake(0, 0, floatWindowSize, floatWindowSize);
     // 初始选中状态
     _button.selected = NO;
     // 禁止高亮
     _button.adjustsImageWhenHighlighted = NO;
+    // 悬浮窗所依赖的根视图
     _button.rootView = self.view.superview;
-    _button.btnDelegate = self;
+    // 悬浮按钮点击事件代理
+    _button.buttonDelegate = self;
+    // 按钮透明度
     _button.imageView.alpha = 0.8;
     
-    // 悬浮窗
-    _window = [[FloatWindow alloc]init];
-    _window.floatFrame = CGRectMake(0, 100, floatSize, floatSize);
+    // 2.按钮的悬浮窗容器
+    _window = [[UIWindow alloc]init];
+    // 悬浮窗尺寸
+    _window.frame = CGRectMake(0, 100, floatWindowSize, floatWindowSize);
+    // 保证悬浮窗至于屏幕最前面
     _window.windowLevel = UIWindowLevelAlert+1;
+    // 悬浮窗容器背景透明
     _window.backgroundColor = [UIColor clearColor];
-    _window.layer.cornerRadius = floatSize/2;
+    // 悬浮窗圆角
+    _window.layer.cornerRadius = floatWindowSize/2;
     _window.layer.masksToBounds = YES;
     // 将按钮添加到悬浮按钮上
     [_window addSubview:_button];
@@ -69,31 +81,25 @@
 }
 
 /**
- *  悬浮按钮点击
+ *  悬浮按钮点击代理事件
  */
-- (void)floatBtnClicked:(UIButton *)sender
-{
-    // 按钮选中关闭切换
-    sender.selected = !sender.selected;
-    if (sender.selected) {
-        [sender setImage:[UIImage imageNamed:@"add_rotate"] forState:UIControlStateNormal];
-    }else{
-        [sender setImage:[UIImage imageNamed:@"add_button"] forState:UIControlStateNormal];
-    }
-    // 关闭悬浮窗
-    //[_window resignKeyWindow];
-    //_window = nil;
-    
-}
-
 - (void)dragButtonClicked:(UIButton *)sender {
     // 按钮选中关闭切换
     sender.selected = !sender.selected;
     if (sender.selected) {
-        [sender setImage:[UIImage imageNamed:@"add_rotate"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:imageName_selected] forState:UIControlStateNormal];
     }else{
-        [sender setImage:[UIImage imageNamed:@"add_button"] forState:UIControlStateNormal];
+        [sender setImage:[UIImage imageNamed:imageName_normal] forState:UIControlStateNormal];
     }
+    
+    // do something else...
 }
+
+/**
+ * 屏幕旋转事件
+ */
+//- (void)statusBarOrientationChange:(NSNotification *)notification {
+//    // do something...
+//}
 
 @end

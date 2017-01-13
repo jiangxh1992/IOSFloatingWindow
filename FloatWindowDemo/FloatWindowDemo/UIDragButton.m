@@ -17,19 +17,19 @@
 /**
  *  开始按下的触点坐标
  */
-@property (nonatomic, assign)CGPoint startPos;
+@property (nonatomic, assign)CGPoint touchStartPosition;
 
 @end
 
 @implementation UIDragButton
 
 // 枚举四个吸附方向
-typedef enum {
+typedef NS_ENUM(NSInteger ,FloatWindowDirection) {
     LEFT,
     RIGHT,
     TOP,
     BOTTOM
-}Dir;
+};
 
 /**
  *  开始触摸，记录触点位置用于判断是拖动还是点击
@@ -37,8 +37,8 @@ typedef enum {
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(nullable UIEvent *)event {
     // 获得触摸在根视图中的坐标
     UITouch *touch = [touches anyObject];
-    _startPos = [touch locationInView:_rootView];
-    _startPos = [self ConvertDir:_startPos];
+    self.touchStartPosition = [touch locationInView:_rootView];
+    self.touchStartPosition = [self ConvertDir:_touchStartPosition];
 }
 
 /**
@@ -63,8 +63,8 @@ typedef enum {
     CGPoint curPoint = [touch locationInView:_rootView];
     curPoint = [self ConvertDir:curPoint];
     // 通知代理,如果结束触点和起始触点极近则认为是点击事件
-    if (pow((_startPos.x - curPoint.x),2) + pow((_startPos.y - curPoint.y),2) < 1) {
-        [self.btnDelegate dragButtonClicked:self];
+    if (pow((_touchStartPosition.x - curPoint.x),2) + pow((_touchStartPosition.y - curPoint.y),2) < 1) {
+        [self.buttonDelegate dragButtonClicked:self];
         // 点击后不吸附
         return;
     }
@@ -83,7 +83,7 @@ typedef enum {
     CGFloat top = curPoint.y;
     CGFloat bottom = H - curPoint.y;
     // 计算四个距离最小的吸附方向
-    Dir minDir = LEFT;
+    FloatWindowDirection minDir = LEFT;
     CGFloat minDistance = left;
     if (right < minDistance) {
         minDistance = right;

@@ -26,6 +26,6 @@
 /**
  *  UIDragButton的点击事件代理
  */
-@property (nonatomic, weak)id<UIDragButtonDelegate>btnDelegate;
+@property (nonatomic, weak)id<UIDragButtonDelegate>buttonDelegate;
 
 @end

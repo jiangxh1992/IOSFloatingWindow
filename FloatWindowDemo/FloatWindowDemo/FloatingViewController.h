@@ -6,8 +6,6 @@
 //
 //
 
-//http://www.myexception.cn/operating-system/1924022.html
-
 #import <UIKit/UIKit.h>
 
 @interface FloatingViewController : UIViewController

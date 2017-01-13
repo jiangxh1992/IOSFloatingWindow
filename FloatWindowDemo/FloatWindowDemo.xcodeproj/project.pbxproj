@@ -17,7 +17,6 @@
 		F3FA7E5E1D4216D000248202 /* FloatWindowDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F3FA7E5D1D4216D000248202 /* FloatWindowDemoUITests.m */; };
 		F3FA7E721D42171E00248202 /* FloatingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F3FA7E6D1D42171E00248202 /* FloatingViewController.m */; };
 		F3FA7E731D42171E00248202 /* UIDragButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F3FA7E6F1D42171E00248202 /* UIDragButton.m */; };
-		F3FA7E741D42171E00248202 /* FloatWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = F3FA7E711D42171E00248202 /* FloatWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,8 +57,6 @@
 		F3FA7E6D1D42171E00248202 /* FloatingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingViewController.m; sourceTree = "<group>"; };
 		F3FA7E6E1D42171E00248202 /* UIDragButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDragButton.h; sourceTree = "<group>"; };
 		F3FA7E6F1D42171E00248202 /* UIDragButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDragButton.m; sourceTree = "<group>"; };
-		F3FA7E701D42171E00248202 /* FloatWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatWindow.h; sourceTree = "<group>"; };
-		F3FA7E711D42171E00248202 /* FloatWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,8 +154,6 @@
 				F3FA7E6D1D42171E00248202 /* FloatingViewController.m */,
 				F3FA7E6E1D42171E00248202 /* UIDragButton.h */,
 				F3FA7E6F1D42171E00248202 /* UIDragButton.m */,
-				F3FA7E701D42171E00248202 /* FloatWindow.h */,
-				F3FA7E711D42171E00248202 /* FloatWindow.m */,
 			);
 			name = "悬浮窗";
 			sourceTree = "<group>";
@@ -230,7 +225,7 @@
 				TargetAttributes = {
 					F3FA7E341D4216D000248202 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = V4SYMZQA29;
+						DevelopmentTeam = C6G3U74T9Y;
 					};
 					F3FA7E4D1D4216D000248202 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -296,7 +291,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3FA7E741D42171E00248202 /* FloatWindow.m in Sources */,
 				F3FA7E401D4216D000248202 /* ViewController.m in Sources */,
 				F3FA7E3D1D4216D000248202 /* AppDelegate.m in Sources */,
 				F3FA7E731D42171E00248202 /* UIDragButton.m in Sources */,
@@ -444,9 +438,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C6G3U74T9Y;
 				INFOPLIST_FILE = FloatWindowDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = xiaoxigame.com.FloatWindowDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = jiangxh.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -455,9 +450,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = C6G3U74T9Y;
 				INFOPLIST_FILE = FloatWindowDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = xiaoxigame.com.FloatWindowDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = jiangxh.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -527,6 +523,7 @@
 				F3FA7E641D4216D000248202 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3FA7E651D4216D000248202 /* Build configuration list for PBXNativeTarget "FloatWindowDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -535,6 +532,7 @@
 				F3FA7E671D4216D000248202 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F3FA7E681D4216D000248202 /* Build configuration list for PBXNativeTarget "FloatWindowDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -543,6 +541,7 @@
 				F3FA7E6A1D4216D000248202 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
