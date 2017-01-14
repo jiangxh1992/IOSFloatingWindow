@@ -1,3 +1,7 @@
+## 此Demo已弃用停止更新，请移步：[https://github.com/jiangxh1992/XHFloatWindow](https://github.com/jiangxh1992/XHFloatWindow)
+
+***
+
 # IOSFloatingWindow
 IOS悬浮窗
 
